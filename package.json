@@ -1,0 +1,36 @@
+{
+  "name": "@aleen42/core-web",
+  "version": "1.0.0",
+  "description": "A polyfill repository for Web APIs, trying to eliminate the difference when using them.",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint"           : "eslint --ext .js .",
+    "prepublishOnly" : "npm run lint && npm run build",
+    "build"          : "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleen42/core-web.git"
+  },
+  "keywords": [
+    "polyfill",
+    "shim",
+    "Web APIs"
+  ],
+  "author": "\"Aleen\" <aleen42@vip.qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aleen42/core-web/issues"
+  },
+  "homepage": "https://github.com/aleen42/core-web#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "core-js": "^3.20.2",
+    "eslint": "^7.32.0",
+    "eslint-config-aleen42": "^1.0.7",
+    "terser-webpack-plugin": "^5.3.0",
+    "webpack": "^5.65.0"
+  }
+}
