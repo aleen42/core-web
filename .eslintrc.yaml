@@ -4,3 +4,6 @@ extends: aleen42
 
 env:
     jasmine: true
+
+globals:
+    _: true

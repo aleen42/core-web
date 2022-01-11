@@ -76,5 +76,8 @@ module.exports = (minimize, all, test) => ({
                 'TEST_ENV' : !!test,
             },
         }),
+        new webpack.ProvidePlugin({
+            _ : 'util/js',
+        }),
     ],
 });
