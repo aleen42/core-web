@@ -13,15 +13,16 @@
  *  - Author: aleen42
  *  - Description: webpack configurations for bundling code
  *  - Create Time: Jan 10th, 2022
- *  - Update Time: Jan 10th, 2022
+ *  - Update Time: Jan 11st, 2022
  *
  */
 
+const webpack = require('webpack');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const ES3HarmonyPlugin = require('./build/ES3HarmonyPlugin');
 
-module.exports = (minimize, all) => ({
+module.exports = (minimize, all, test) => ({
     mode   : 'production',
     target : ['web', 'es5'],
     output : {
@@ -64,5 +65,12 @@ module.exports = (minimize, all) => ({
         minimizer : [new TerserPlugin({terserOptions : {ie8 : true}})],
     } : {minimize : false},
 
-    plugins : [new ES3HarmonyPlugin()],
+    plugins : [
+        new ES3HarmonyPlugin(),
+        new webpack.DefinePlugin({
+            'process.env' : {
+                'TEST_ENV' : !!test,
+            },
+        }),
+    ],
 });

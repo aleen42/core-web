@@ -4,9 +4,10 @@
   "description": "A polyfill repository for Web APIs, trying to eliminate the difference when using them.",
   "main": "dist/index.js",
   "scripts": {
-    "lint"           : "eslint --ext .js .",
-    "prepublishOnly" : "npm run lint && npm run build",
-    "build"          : "node build.js"
+    "lint": "eslint --ext .js .",
+    "prepublishOnly": "npm run lint && npm t && npm run build",
+    "build": "node build.js",
+    "test": "karma start karma.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,10 +27,23 @@
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
+    "@chiragrupani/karma-chromium-edge-launcher": "^2.1.1",
+    "@coremail/karma-detect-browsers": "coremail/karma-detect-browsers#coremail",
     "babel-loader": "^8.2.3",
     "core-js": "^3.20.2",
+    "detector": "^2.5.0",
     "eslint": "^7.32.0",
     "eslint-config-aleen42": "^1.0.7",
+    "jasmine-core": "^4.0.0",
+    "karma": "^6.3.10",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^2.1.2",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^4.0.1",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-sourcemap-loader": "^0.3.8",
+    "karma-webpack": "^5.0.0",
     "terser-webpack-plugin": "^5.3.0",
     "webpack": "^5.65.0"
   }
