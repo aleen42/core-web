@@ -29,6 +29,8 @@ module.exports = (minimize, all, test) => ({
         path : path.resolve(__dirname, 'dist'),
     },
 
+    resolve : {modules : [path.resolve(__dirname), 'node_modules']},
+
     module : {
         rules : [{
             test : /\..?js$/,
