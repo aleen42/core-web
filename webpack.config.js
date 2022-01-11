@@ -26,15 +26,17 @@ module.exports = (minimize, all, test) => ({
     mode   : 'production',
     target : ['web', 'es5'],
     output : {
-        path : path.resolve(__dirname, 'dist'),
+        path          : path.resolve(__dirname, 'dist'),
+        chunkFilename : 'external/[name].js',
     },
 
     resolve : {modules : [path.resolve(__dirname), 'node_modules']},
 
     module : {
         rules : [{
-            test : /\..?js$/,
-            use  : {
+            test    : /\..?js$/,
+            exclude : /node_modules/,
+            use     : {
                 loader  : 'babel-loader',
                 options : {
                     presets : [
