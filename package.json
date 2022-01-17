@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/aleen42/core-web#readme",
   "devDependencies": {
+    "@aleen42/karma-triflejs-launcher":"^1.0.1",
     "@babel/core": "^7.16.7",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.16.7",

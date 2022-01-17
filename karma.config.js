@@ -18,20 +18,29 @@
  *
  */
 
+const _ = require('./util/js');
 const webpackConfig = Object.assign({}, require('./webpack.config')(0, 1, 1));
 delete webpackConfig.entry;
 delete webpackConfig.output;
 
 module.exports = config => {
+    // IE9 (jasmine not support), IE8 / IE7 (karma not support)
+    const trifleJS = process.platform === 'win32' ? ['IE10', 'Edge12'] : [];
+
     config.set({
-        webpack       : webpackConfig,
-        files         : ['test/index.js'],
-        preprocessors : {'test/index.js' : ['webpack', 'sourcemap']},
-        frameworks    : ['jasmine', 'webpack', 'detectBrowsers'],
-        browsers      : ['PhantomJS'],
-        reporters     : ['mocha'],
-        singleRun     : true,
-        plugins       : [
+        webpack         : webpackConfig,
+        files           : ['test/index.js'],
+        preprocessors   : {'test/index.js' : ['webpack', 'sourcemap']},
+        frameworks      : ['jasmine', 'webpack', 'detectBrowsers'],
+        browsers        : ['PhantomJS', ...trifleJS],
+        reporters       : ['mocha'],
+        singleRun       : true,
+        customLaunchers : _.objBy(trifleJS, null, version => ({
+            base        : 'TrifleJS',
+            flags       : [`--emulate=${version}`],
+            displayName : `${version} (TrifleJS emulated)`,
+        })),
+        plugins         : [
             'karma-jasmine',
             'karma-mocha-reporter',
             'karma-sourcemap-loader',
@@ -42,6 +51,7 @@ module.exports = config => {
             'karma-phantomjs-launcher',
             '@chiragrupani/karma-chromium-edge-launcher',
             '@coremail/karma-detect-browsers',
+            '@aleen42/karma-triflejs-launcher',
         ],
 
         client : {jasmine : {random : false}},
