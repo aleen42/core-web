@@ -14,7 +14,7 @@
  *  - Author: aleen42
  *  - Description: Shims for featured Web APIs
  *  - Create Time: Jan 11st, 2022
- *  - Update Time: Jan 11st, 2022
+ *  - Update Time: Jan 18th, 2022
  *
  */
 
@@ -24,14 +24,14 @@ delete webpackConfig.entry;
 delete webpackConfig.output;
 
 module.exports = config => {
-    // IE9 (jasmine not support), IE8 / IE7 (karma not support)
-    const trifleJS = process.platform === 'win32' ? ['IE10', 'Edge12'] : [];
+    // IE8 / IE7 (karma not support socket.io)
+    const trifleJS = process.platform === 'win32' ? ['IE9', 'IE10', 'Edge12'] : [];
 
     config.set({
         webpack         : webpackConfig,
         files           : ['test/index.js'],
         preprocessors   : {'test/index.js' : ['webpack', 'sourcemap']},
-        frameworks      : ['jasmine', 'webpack', 'detectBrowsers'],
+        frameworks      : ['jasmine', 'webpack', 'detectBrowsers', 'polyfill'],
         browsers        : ['PhantomJS', ...trifleJS],
         reporters       : ['mocha'],
         singleRun       : true,
@@ -52,6 +52,7 @@ module.exports = config => {
             '@chiragrupani/karma-chromium-edge-launcher',
             '@coremail/karma-detect-browsers',
             '@aleen42/karma-triflejs-launcher',
+            '@aleen42/karma-polyfill',
         ],
 
         client : {jasmine : {random : false}},
