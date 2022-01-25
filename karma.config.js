@@ -14,7 +14,7 @@
  *  - Author: aleen42
  *  - Description: Shims for featured Web APIs
  *  - Create Time: Jan 11st, 2022
- *  - Update Time: Jan 18th, 2022
+ *  - Update Time: Jan 25th, 2022
  *
  */
 
@@ -27,12 +27,16 @@ module.exports = config => {
     // IE8 / IE7 (karma not support socket.io)
     const trifleJS = process.platform === 'win32' ? ['IE9', 'IE10', 'Edge12'] : [];
 
+    // Chrome Headless via Puppeteer
+    // noinspection JSUnresolvedFunction
+    process.env.CHROME_BIN = require('puppeteer').executablePath();
+
     config.set({
         webpack         : webpackConfig,
         files           : ['test/index.js'],
         preprocessors   : {'test/index.js' : ['webpack', 'sourcemap']},
         frameworks      : ['jasmine', 'webpack', 'detectBrowsers', 'polyfill'],
-        browsers        : ['PhantomJS', ...trifleJS],
+        browsers        : ['ChromeHeadless', ...trifleJS],
         reporters       : ['mocha'],
         singleRun       : true,
         customLaunchers : _.objBy(trifleJS, null, version => ({
@@ -48,7 +52,6 @@ module.exports = config => {
             'karma-chrome-launcher',
             'karma-firefox-launcher',
             'karma-ie-launcher',
-            'karma-phantomjs-launcher',
             '@chiragrupani/karma-chromium-edge-launcher',
             '@coremail/karma-detect-browsers',
             '@aleen42/karma-triflejs-launcher',
@@ -58,8 +61,10 @@ module.exports = config => {
         client : {jasmine : {random : false}},
 
         detectBrowsers : {
-            // ref: https://github.com/karma-runner/karma-safari-launcher/issues/12
-            'postDetection' : availableBrowser => availableBrowser.filter(name => name !== 'Safari'),
+            usePhantomJS    : false,
+            'postDetection' : availableBrowser => process.env['CI_SERVER'] ? ['ChromeHeadless']
+                // REF: https://github.com/karma-runner/karma-safari-launcher/issues/12
+                : availableBrowser.filter(name => name !== 'Safari'),
         },
     });
 };

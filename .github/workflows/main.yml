@@ -1,0 +1,21 @@
+name: Run Test Cases
+env:
+  CI_SERVER: 1
+on:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '17'
+      - name: Test
+        run: |
+          npm version
+          npm i --no-save
+          npm t
