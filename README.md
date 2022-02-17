@@ -66,6 +66,7 @@ Check the following list of supported polyfills and feel free to use it. If ther
 ### Release History
 
 * ==================== **1.0.0 Initial release** ====================
+    * 1.0.1 implement polyfills or patches for Blob, File, FileReader, ReadableStream, WritableStream, TextEncoder, TextDecoder, etc.
 
 ### :fuelpump: How to contribute
 
