@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint --ext .js .",
     "prepublishOnly": "npm run lint && npm t && npm run build",
-    "build": "node build.js",
+    "build": "node build.js && npm run document",
+    "document": "node document.js",
     "test": "karma start karma.config.js"
   },
   "repository": {
@@ -53,5 +54,8 @@
     "text-encoding": "^0.7.0",
     "web-streams-polyfill": "^3.2.0",
     "webpack": "^5.65.0"
+  },
+  "engines" : {
+    "node" : ">=13.0.0"
   }
 }
