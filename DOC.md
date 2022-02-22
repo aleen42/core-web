@@ -1,5 +1,7 @@
 ## core-web
 
+![npm](https://badges.aleen42.com/src/npm.svg) ![javascript](https://badges.aleen42.com/src/javascript.svg)
+
 A polyfill repository for [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API), trying to eliminate the difference when using them. It mainly focuses on the implementation of Web APIs, which is not the same as [`core-js`](https://github.com/zloirock/core-js/), focusing on JavaScript. As a large project, some APIs should be shimmed step by step, and if you have any polyfill or workaround about those APIs, feel free to contribute to this project.
 
 ### Installation
