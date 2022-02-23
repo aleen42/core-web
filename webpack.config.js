@@ -13,7 +13,7 @@
  *  - Author: aleen42
  *  - Description: webpack configurations for bundling code
  *  - Create Time: Jan 10th, 2022
- *  - Update Time: Jan 11st, 2022
+ *  - Update Time: Feb 24th, 2022
  *
  */
 
@@ -52,6 +52,9 @@ module.exports = (minimize, all, test) => ({
                     ],
                 },
             },
+        }, {
+            test : /chunk\.js$/,
+            use  : require.resolve('./build/EmbedSourceLoader.js'),
         }],
     },
 

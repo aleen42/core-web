@@ -56,6 +56,8 @@ Check the following list of supported polyfills and feel free to use it. If ther
 <details>
     <summary><b>featured</b> <i>(natively unsupported under IE)</i></summary>
     <ul>
+        <li>Abort (<a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" target=_blank>AbortController</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal" target=_blank>AbortSignal</a>)</li>
+        <li>Fetch (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target=_blank>Fetch_API</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers" target=_blank>Headers</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target=_blank>Request</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target=_blank>Response</a>)</li>
         <li>Streams (<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream" target=_blank>ReadableStream</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/WritableStream" target=_blank>WritableStream</a>)</li>
         <li>Text (<a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder" target=_blank>TextEncoder</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder" target=_blank>TextDecoder</a>)</li>
     </ul>

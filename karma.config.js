@@ -18,6 +18,7 @@
  *
  */
 
+const {proxies} = require('./test/mock.js');
 const _ = require('./util/js');
 const webpackConfig = Object.assign({}, require('./webpack.config')(0, 1, 1));
 delete webpackConfig.entry;
@@ -35,6 +36,7 @@ module.exports = config => {
         // TODO: fix conflicts when launching multiple IE instances at the same time
         concurrency     : 1,
         browserNoActivityTimeout : 60000,
+        proxies,
         webpack         : webpackConfig,
         files           : ['test/index.js'],
         preprocessors   : {'test/index.js' : ['webpack', 'sourcemap']},
