@@ -35,7 +35,7 @@ import('@aleen42/core-web/dist/stable.all.min.js');
 
 ### Polyfills
 
-Check the following list of supported polyfills and feel free to use it. If there are any compatible problems, please report them. All test cases of those specifications have been tested down to IE9 under my local machine.
+Check the following list of supported polyfills and feel free to use it. If there are any compatible problems, please report them. All test cases of those specifications have been tested down to IE9.
 
 <details>
     <summary><b>stable</b> <i>(natively supported above IE10)</i></summary>
@@ -63,7 +63,8 @@ Check the following list of supported polyfills and feel free to use it. If ther
 
 ### Todo
 
-- [ ] Using remote machines to test specifications down to IE8.
+- [x] Using remote machines to test specifications down to IE9.
+- [ ] Polyfill for `socket.io` to support testing down to IE7.
 
 ### Release History
 

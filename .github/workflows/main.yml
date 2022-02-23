@@ -1,19 +1,40 @@
 name: Run Test Cases
 env:
   CI_SERVER: 1
-on:
-  push:
+on: [ push, pull_request ]
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
-
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Lint
+        run: |
+          npm version
+          npm i --no-save
+          npm run lint
+  test:
+    needs: [ lint ]
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+        node:
+          - 13
+          - 16
+          - 17
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 1
       - uses: actions/setup-node@v2-beta
         with:
-          node-version: '17'
+          node-version: ${{ matrix.node }}
       - name: Test
         run: |
           npm version

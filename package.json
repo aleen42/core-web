@@ -27,7 +27,6 @@
   "homepage": "https://github.com/aleen42/core-web#readme",
   "devDependencies": {
     "@aleen42/karma-polyfill": "^1.0.0",
-    "@aleen42/karma-triflejs-launcher": "^1.0.1",
     "@babel/core": "^7.16.7",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.16.7",
@@ -55,7 +54,7 @@
     "web-streams-polyfill": "^3.2.0",
     "webpack": "^5.65.0"
   },
-  "engines" : {
-    "node" : ">=13.0.0"
+  "engines": {
+    "node": ">=13.0.0"
   }
 }

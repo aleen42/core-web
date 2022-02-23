@@ -14,7 +14,7 @@
  *  - Author: aleen42
  *  - Description: Shims for featured Web APIs
  *  - Create Time: Jan 11st, 2022
- *  - Update Time: Jan 25th, 2022
+ *  - Update Time: Feb 24th, 2022
  *
  */
 
@@ -25,24 +25,26 @@ delete webpackConfig.output;
 
 module.exports = config => {
     // IE8 / IE7 (karma not support socket.io)
-    const trifleJS = process.platform === 'win32' ? ['IE9', 'IE10', 'Edge12'] : [];
+    const simulatedIEs = ['IE9', 'IE10', 'IE11', 'Edge12'];
 
     // Chrome Headless via Puppeteer
     // noinspection JSUnresolvedFunction
     process.env.CHROME_BIN = require('puppeteer').executablePath();
 
     config.set({
+        // TODO: fix conflicts when launching multiple IE instances at the same time
+        concurrency     : 1,
+        browserNoActivityTimeout : 60000,
         webpack         : webpackConfig,
         files           : ['test/index.js'],
         preprocessors   : {'test/index.js' : ['webpack', 'sourcemap']},
         frameworks      : ['jasmine', 'webpack', 'detectBrowsers', 'polyfill'],
-        browsers        : ['ChromeHeadless', ...trifleJS],
         reporters       : ['mocha'],
         singleRun       : true,
-        customLaunchers : _.objBy(trifleJS, null, version => ({
-            base        : 'TrifleJS',
-            flags       : [`--emulate=${version}`],
-            displayName : `${version} (TrifleJS emulated)`,
+        customLaunchers : _.objBy(simulatedIEs, null, version => ({
+            base              : 'IE',
+            displayName       : `${version} (document mode)`,
+            'x-ua-compatible' : `IE=Emulate${version}`,
         })),
         plugins         : [
             'karma-jasmine',
@@ -54,7 +56,6 @@ module.exports = config => {
             'karma-ie-launcher',
             '@chiragrupani/karma-chromium-edge-launcher',
             '@coremail/karma-detect-browsers',
-            '@aleen42/karma-triflejs-launcher',
             '@aleen42/karma-polyfill',
         ],
 
@@ -62,9 +63,16 @@ module.exports = config => {
 
         detectBrowsers : {
             usePhantomJS    : false,
-            'postDetection' : availableBrowser => process.env['CI_SERVER'] ? ['ChromeHeadless']
+            'postDetection' : availableBrowser => {
+                // use IE (IE11) to simulate with different document mode
+                availableBrowser.includes('IE') && availableBrowser.push(...simulatedIEs);
+                // use headless Chrome or Firefox under CI
+                availableBrowser = availableBrowser.map(name =>
+                    name.replace(/^(Chrome|Chromium|Firefox)$/, process.env['CI_SERVER'] ? '$1Headless' : '$1'));
+
                 // REF: https://github.com/karma-runner/karma-safari-launcher/issues/12
-                : availableBrowser.filter(name => name !== 'Safari'),
+                return availableBrowser.filter(name => name !== 'Safari');
+            },
         },
     });
 };
