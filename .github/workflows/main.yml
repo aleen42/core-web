@@ -35,8 +35,18 @@ jobs:
       - uses: actions/setup-node@v2-beta
         with:
           node-version: ${{ matrix.node }}
+      - run: node -p '`karmaLogs=${path.join(os.tmpdir(), `_karma_webpack_*`)}`' >> $GITHUB_ENV
+        if: matrix.os != 'windows-latest'
+      - run: node -p '`karmaLogs=${path.join(os.tmpdir(), `_karma_webpack_*`)}`' >> $env:GITHUB_ENV
+        if: matrix.os == 'windows-latest'
       - name: Test
         run: |
           npm version
           npm i --no-save
           npm t
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: logs-(${{ matrix.os }}-${{ matrix.node }})
+          path: ${{ env.karmaLogs }}
+          retention-days: 7
