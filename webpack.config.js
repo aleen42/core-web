@@ -13,7 +13,7 @@
  *  - Author: aleen42
  *  - Description: webpack configurations for bundling code
  *  - Create Time: Jan 10th, 2022
- *  - Update Time: Feb 24th, 2022
+ *  - Update Time: Apr 7th, 2022
  *
  */
 
@@ -21,6 +21,7 @@ const webpack = require('webpack');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const ES3HarmonyPlugin = require('./build/ES3HarmonyPlugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 module.exports = (minimize, all, test) => ({
     mode   : 'production',
@@ -82,5 +83,7 @@ module.exports = (minimize, all, test) => ({
         new webpack.ProvidePlugin({
             _ : 'util/js',
         }),
+
+        new CircularDependencyPlugin({failOnError: true, exclude: /node_modules/}),
     ],
 });
