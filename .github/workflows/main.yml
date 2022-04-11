@@ -44,6 +44,8 @@ jobs:
           npm version
           npm i --no-save
           npm t
+        env:
+          FORCE_COLOR: 2
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
