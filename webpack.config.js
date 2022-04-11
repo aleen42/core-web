@@ -13,7 +13,7 @@
  *  - Author: aleen42
  *  - Description: webpack configurations for bundling code
  *  - Create Time: Jan 10th, 2022
- *  - Update Time: Apr 7th, 2022
+ *  - Update Time: Apr 11st, 2022
  *
  */
 
@@ -86,4 +86,7 @@ module.exports = (minimize, all, test) => ({
 
         new CircularDependencyPlugin({failOnError: true, exclude: /node_modules/}),
     ],
+
+    // TODO: ignore big chunks for testing
+    ...test && {performance: {hints : false}},
 });
