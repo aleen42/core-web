@@ -6,7 +6,7 @@ module.exports = class ES3HarmonyPlugin {
         // noinspection JSUnresolvedVariable
         hooks.compilation.tap({name}, compilation => {
             // noinspection JSUnresolvedVariable, JSUnresolvedFunction
-            JavascriptModulesPlugin.getCompilationHooks(compilation).renderMain.tap({name}, replaceSource)
+            JavascriptModulesPlugin.getCompilationHooks(compilation).renderMain.tap({name}, replaceSource);
         });
     }
 };
