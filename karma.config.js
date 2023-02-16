@@ -14,7 +14,7 @@
  *  - Author: aleen42
  *  - Description: Shims for featured Web APIs
  *  - Create Time: Jan 11st, 2022
- *  - Update Time: Feb 24th, 2022
+ *  - Update Time: Feb 20th, 2023
  *
  */
 
@@ -25,8 +25,8 @@ delete webpackConfig.entry;
 delete webpackConfig.output;
 
 module.exports = config => {
-    // IE8 / IE7 (karma not support socket.io)
-    const simulatedIEs = ['IE9', 'IE10', 'IE11', 'Edge12'];
+    const withShims = process.argv[4] === 'shims';
+    const simulatedIEs = [...[7, 8, 9, 10, 11].map(i => `IE${i}`), 'Edge12'];
 
     // Chrome Headless via Puppeteer
     // noinspection JSUnresolvedFunction
@@ -34,22 +34,25 @@ module.exports = config => {
 
     config.set({
         // TODO: fix conflicts when launching multiple IE instances at the same time
-        concurrency     : 1,
+        concurrency              : 1,
         browserNoActivityTimeout : 60000,
         proxies,
-        webpack         : webpackConfig,
-        files           : ['test/index.js'],
-        preprocessors   : {'test/index.js' : ['webpack', 'sourcemap']},
-        frameworks      : ['jasmine', 'webpack', 'detectBrowsers', 'polyfill'],
-        reporters       : ['mocha'],
-        singleRun       : true,
-        customLaunchers : _.objBy(simulatedIEs, null, version => ({
+        webpack                  : webpackConfig,
+        files                    : [...withShims ? ['lib/polyfill.js'] : [], 'test/index.js'],
+        preprocessors            : {
+            'lib/polyfill.js' : ['webpack', 'sourcemap'],
+            'test/index.js'   : ['webpack', 'sourcemap'],
+        },
+        frameworks               : ['jasmine-polyfill', 'webpack', 'detectBrowsers', 'polyfill'],
+        reporters                : ['mocha'],
+        singleRun                : true,
+        customLaunchers          : _.objBy(simulatedIEs, null, version => ({
             base              : 'IE',
             displayName       : `${version} (document mode)`,
             'x-ua-compatible' : `IE=Emulate${version}`,
         })),
-        plugins         : [
-            'karma-jasmine',
+        plugins                  : [
+            '@aleen42/karma-polyfill/jasmine',
             'karma-mocha-reporter',
             'karma-sourcemap-loader',
             'karma-webpack',

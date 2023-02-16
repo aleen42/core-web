@@ -41,7 +41,7 @@ Check the following list of supported polyfills and feel free to use it. If ther
 ### Todo
 
 - [x] Using remote machines to test specifications down to IE9.
-- [ ] Polyfill for `socket.io` to support testing down to IE7.
+- [x] Support testing framework under IE8-.
 
 ### Release History
 
