@@ -13,7 +13,7 @@
  *  - Author: aleen42
  *  - Description: webpack configurations for bundling code
  *  - Create Time: Jan 10th, 2022
- *  - Update Time: Apr 11st, 2022
+ *  - Update Time: Feb 20th, 2023
  *
  */
 
@@ -56,6 +56,13 @@ module.exports = (minimize, all, test) => ({
         }, {
             test : /chunk\.js$/,
             use  : require.resolve('./build/EmbedSourceLoader.js'),
+        }, {
+            test    : /\.js$/,
+            include : [
+                {not : /node_modules/},
+                /node_modules[\\/]core-js[\\/]/,
+            ],
+            use     : require.resolve('./build/stripWebAPILoader.js'),
         }],
     },
 
