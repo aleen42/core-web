@@ -42,6 +42,7 @@ Check the following list of supported polyfills and feel free to use it. If ther
 
 - [x] Using remote machines to test specifications down to IE9.
 - [x] Support testing framework under IE8-.
+- [ ] The basic shim of `Blob` has relied on the shim of `web-streams`, which has broken under IE8-.
 
 ### Release History
 

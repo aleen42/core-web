@@ -23,6 +23,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const ES3HarmonyPlugin = require('./build/ES3HarmonyPlugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
+// noinspection WebpackConfigHighlighting
 module.exports = (minimize, all, test) => ({
     mode   : 'production',
     target : ['web', 'es5'],
@@ -35,8 +36,11 @@ module.exports = (minimize, all, test) => ({
 
     module : {
         rules : [{
-            test    : /\..?js$/,
-            exclude : /node_modules/,
+            test    : /\.js$/,
+            include : [
+                {not : /node_modules/},
+                /node_modules[\\/]web-streams-polyfill[\\/]/,
+            ],
             use     : {
                 loader  : 'babel-loader',
                 options : {
@@ -91,9 +95,9 @@ module.exports = (minimize, all, test) => ({
             _ : 'util/js',
         }),
 
-        new CircularDependencyPlugin({failOnError: true, exclude: /node_modules/}),
+        new CircularDependencyPlugin({failOnError : true, exclude : /node_modules/}),
     ],
 
     // TODO: ignore big chunks for testing
-    ...test && {performance: {hints : false}},
+    ...test && {performance : {hints : false}},
 });
