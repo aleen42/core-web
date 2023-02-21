@@ -58,8 +58,7 @@ Check the following list of supported polyfills and feel free to use it. If ther
     <summary><b>featured</b> <i>(natively unsupported under IE)</i></summary>
     <ul>
         <li>Abort (<a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" target=_blank>AbortController</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal" target=_blank>AbortSignal</a>)</li>
-        <li>Fetch (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target=_blank>Fetch_API</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers" target=_blank>Headers</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target=_blank>Request</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target=_blank>Response</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials" target=_blank>credentials</a>)<ul><li><i><code>XMLRequestHttp</code> returns a text rather than a <code>Blob</code> under IE9-, and it means that <code>fetch()</code> cannot handle <code>utf-16le</code> data.
-</i></li><li><i><code>XMLHttpRequest</code> returns a text rather than a <code>Blob</code> under IE9-, and it means that <code>fetch()</code> cannot handle <code>utf-16le</code> data.
+        <li>Fetch (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target=_blank>Fetch_API</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers" target=_blank>Headers</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target=_blank>Request</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target=_blank>Response</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials" target=_blank>credentials</a>)<ul><li><i><code>XMLHttpRequest</code> returns a text rather than a <code>Blob</code> under IE9-, and it means that <code>fetch()</code> cannot handle <code>utf-16le</code> data.
 </i></li><li><i>native <code>fetch()</code> <a href="https://github.com/github/fetch/pull/1119">won't normalize</a> the <code>patch</code> method as uppercase.
 </i></li><li><i><a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials"><code>credentials</code></a> is not supported under IE9-.
 </i></li></ul></li>
@@ -71,7 +70,8 @@ Check the following list of supported polyfills and feel free to use it. If ther
 ### Todo
 
 - [x] Using remote machines to test specifications down to IE9.
-- [ ] Polyfill for `socket.io` to support testing down to IE7.
+- [x] Support testing framework under IE8-.
+- [ ] The basic shim of `Blob` has relied on the shim of `web-streams`, which has broken under IE8-.
 
 ### Release History
 
@@ -86,7 +86,3 @@ Have an idea? Found a bug? See [How to contribute](https://wiki.aleen42.com/cont
 ### :scroll: License
 
 [MIT](https://wiki.aleen42.com/MIT.html) © aleen42
-
-*Note: if you like this project, feel free to buy me a swimming chance:*
-
-[![badges](https://badges.aleen42.com/src/paypal.svg)](http://paypal.me/aleen42) [![badges](https://badges.aleen42.com/src/patreon.svg)](https://www.patreon.com/aleen42) [![badges](https://badges.aleen42.com/src/buymeacoffee.svg)](https://www.buymeacoffee.com/aleen42)
