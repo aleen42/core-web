@@ -13,7 +13,7 @@
  *  - Author: aleen42
  *  - Description: webpack configurations for bundling code
  *  - Create Time: Jan 10th, 2022
- *  - Update Time: Feb 20th, 2023
+ *  - Update Time: Jan 23rd, 2025
  *
  */
 
@@ -25,7 +25,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 // noinspection WebpackConfigHighlighting
 module.exports = (minimize, all, test) => ({
-    mode   : 'production',
+    mode   : minimize ? 'production' : 'development',
     target : ['web', 'es5'],
     output : {
         path          : path.resolve(__dirname, 'dist'),
