@@ -14,7 +14,7 @@
  *  - Author: aleen42
  *  - Description: Shims for featured Web APIs
  *  - Create Time: Jan 11st, 2022
- *  - Update Time: Feb 20th, 2023
+ *  - Update Time: Jan 23rd, 2025
  *
  */
 
@@ -60,9 +60,9 @@ module.exports = config => {
             'karma-webpack',
             'karma-chrome-launcher',
             'karma-firefox-launcher',
-            'karma-ie-launcher',
+            '@aleen42/karma-ie-launcher',
             '@chiragrupani/karma-chromium-edge-launcher',
-            '@coremail/karma-detect-browsers',
+            '@aleen42/karma-detect-browsers',
             '@aleen42/karma-polyfill',
         ],
 

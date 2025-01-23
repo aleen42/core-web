@@ -39,7 +39,7 @@ module.exports = (minimize, all, test) => ({
             test    : /\.js$/,
             include : [
                 {not : /node_modules/},
-                /node_modules[\\/]web-streams-polyfill[\\/]/,
+                /node_modules[\\/](web-streams-polyfill|cookie)[\\/]/,
             ],
             use     : {
                 loader  : 'babel-loader',
