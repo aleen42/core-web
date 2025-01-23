@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const config = require('./webpack.config');
 
 // clean the dist folder
-fs.rmdirSync('dist', {recursive : true});
+fs.existsSync('dist') && fs.rmdirSync('dist', {recursive : true});
 
 // build all versions
 [0, 1].forEach(minimize => [0, 1].forEach(all => webpack(config(minimize, all)).run(webpackCallback)));
