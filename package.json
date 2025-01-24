@@ -1,6 +1,6 @@
 {
   "name": "@aleen42/core-web",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A polyfill repository for Web APIs, trying to eliminate the difference when using them.",
   "main": "dist/index.js",
   "scripts": {

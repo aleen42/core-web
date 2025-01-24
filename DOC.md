@@ -49,6 +49,7 @@ Check the following list of supported polyfills and feel free to use it. If ther
 * ==================== **1.0.0 Initial release** ====================
     * 1.0.1 implement polyfills or patches for Blob, File, FileReader, ReadableStream, WritableStream, TextEncoder, TextDecoder, etc.
     * 1.0.2 implement polyfills for Fetch, Event, AbortController, AbortSignal, etc. Also fix some bugs and do some enhancements for CI.
+    * 1.0.3 implement polyfills for Element classList. Also upgrade some dependencies, and ensure tests under Node 18+.
 
 ### :fuelpump: How to contribute
 
