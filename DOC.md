@@ -34,7 +34,7 @@ import('@aleen42/core-web/dist/stable.all.min.js');
 
 ### Polyfills
 
-Check the following list of supported polyfills and feel free to use it. If there are any compatible problems, please report them. All test cases of those specifications have been tested down to IE9.
+Check the following list of supported polyfills and feel free to use it. If there are any compatible problems, please report them. All test cases of those specifications have been tested down to IE7.
 
 {{polyfills}}
 

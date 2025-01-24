@@ -35,7 +35,7 @@ import('@aleen42/core-web/dist/stable.all.min.js');
 
 ### Polyfills
 
-Check the following list of supported polyfills and feel free to use it. If there are any compatible problems, please report them. All test cases of those specifications have been tested down to IE9.
+Check the following list of supported polyfills and feel free to use it. If there are any compatible problems, please report them. All test cases of those specifications have been tested down to IE7.
 
 <details>
     <summary><b>stable</b> <i>(natively supported above IE10)</i></summary>
@@ -63,7 +63,8 @@ Check the following list of supported polyfills and feel free to use it. If ther
 </i></li><li><i>native <code>fetch()</code> <a href="https://github.com/github/fetch/pull/1119">won't normalize</a> the <code>patch</code> method as uppercase.
 </i></li><li><i><a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials"><code>credentials</code></a> is not supported under IE9-.
 </i></li></ul></li>
-        <li>Streams (<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream" target=_blank>ReadableStream</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/WritableStream" target=_blank>WritableStream</a>)</li>
+        <li>Streams (<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream" target=_blank>ReadableStream</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/WritableStream" target=_blank>WritableStream</a>)<ul><li><i>Not supported under IE8- due to <a href="https://github.com/MattiasBuelens/web-streams-polyfill/issues/125">the reason</a>
+</i></li></ul></li>
         <li>Text (<a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder" target=_blank>TextEncoder</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder" target=_blank>TextDecoder</a>)</li>
     </ul>
 </details>
