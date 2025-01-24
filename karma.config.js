@@ -28,7 +28,7 @@ module.exports = config => {
     const withShims = process.argv[4] === 'shims';
     // TODO: The basic shim of `Blob` has relied on the shim of `web-streams`, which has broken under IE8-.
     // eslint-disable-next-line
-    const simulatedIEs = [...[/*7, 8, */9, 10, 11].map(i => `IE${i}`), 'Edge12'];
+    const simulatedIEs = [...[7, 8, 9, 10, 11].map(i => `IE${i}`), 'Edge12'];
 
     // Chrome Headless via Puppeteer
     // noinspection JSUnresolvedFunction
