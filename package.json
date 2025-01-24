@@ -36,7 +36,7 @@
     "babel-loader": "^8.2.3",
     "circular-dependency-plugin": "^5.2.2",
     "classlist.js": "eligrey/classList.js",
-    "core-js": "^3.20.2",
+    "core-js": "^3.40.0",
     "detector": "^2.5.0",
     "eslint": "^7.32.0",
     "eslint-config-aleen42": "^1.0.7",
