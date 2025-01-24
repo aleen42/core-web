@@ -14,7 +14,7 @@
  *  - Author: aleen42
  *  - Description: Shims for featured Web APIs
  *  - Create Time: Jan 11st, 2022
- *  - Update Time: Jan 23rd, 2025
+ *  - Update Time: Jan 24th, 2025
  *
  */
 
@@ -48,11 +48,19 @@ module.exports = config => {
         frameworks               : ['jasmine-polyfill', 'webpack', 'detectBrowsers', 'polyfill'],
         reporters                : ['mocha'],
         singleRun                : true,
-        customLaunchers          : _.objBy(simulatedIEs, null, version => ({
-            base              : 'IE',
-            displayName       : `${version} (document mode)`,
-            'x-ua-compatible' : `IE=Emulate${version}`,
-        })),
+        customLaunchers          : {
+            ..._.objBy(simulatedIEs, null, version => ({
+                base              : 'IE',
+                displayName       : `${version} (document mode)`,
+                'x-ua-compatible' : `IE=Emulate${version}`,
+            })),
+
+            // Cannot start ChromeHeadless under latest Ubuntu
+            // ref: https://github.com/karma-runner/karma-chrome-launcher/issues/175
+            HeadlessChrome   : {base : 'ChromeHeadless', flags : ['--no-sandbox', '--disable-setuid-sandbox']},
+            HeadlessChromium : {base : 'ChromiumHeadless', flags : ['--no-sandbox', '--disable-setuid-sandbox']},
+            HeadlessFirefox  : {base : 'FirefoxHeadless'},
+        },
         plugins                  : [
             '@aleen42/karma-polyfill/jasmine',
             'karma-mocha-reporter',
@@ -75,7 +83,7 @@ module.exports = config => {
                 availableBrowser.includes('IE') && availableBrowser.push(...simulatedIEs);
                 // use headless Chrome or Firefox under CI
                 availableBrowser = availableBrowser.map(name =>
-                    name.replace(/^(Chrome|Chromium|Firefox)$/, process.env['CI_SERVER'] ? '$1Headless' : '$1'));
+                    name.replace(/^(Chrome|Chromium|Firefox)$/, process.env['CI_SERVER'] ? 'Headless$1' : '$1'));
 
                 // REF: https://github.com/karma-runner/karma-safari-launcher/issues/12
                 return availableBrowser.filter(name => name !== 'Safari');
