@@ -20,21 +20,22 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - windows-2019
+          - windows-latest
           - macos-latest
         node:
-          - 13
-          - 16
-          - 17
+          - 18
+          - 20
+          - 22
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 1
-      - uses: actions/setup-node@v2-beta
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+          architecture: 'x64'
       - run: node -p '`karmaLogs=${path.join(os.tmpdir(), `_karma_webpack_*`)}`' >> $GITHUB_ENV
         if: matrix.os != 'windows-latest'
       - run: node -p '`karmaLogs=${path.join(os.tmpdir(), `_karma_webpack_*`)}`' >> $env:GITHUB_ENV

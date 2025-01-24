@@ -59,7 +59,7 @@
     "whatwg-fetch": "npm:@aleen42/whatwg-fetch@^3.6.3-beta.4"
   },
   "engines": {
-    "node": ">=13.0.0"
+    "node": ">=18.0.0"
   },
   "browserslist" : [
     "defaults",
