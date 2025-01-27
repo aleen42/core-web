@@ -52,7 +52,8 @@ Check the following list of supported polyfills and feel free to use it. If ther
 </i></li></ul></li>
         <li>HTMLElement (<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus" target=_blank>focus</a>)</li>
         <li>HTMLOptionElement (<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option" target=_blank>Option</a>)</li>
-        <li>URL (<a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/URL" target=_blank>constructor</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams" target=_blank>URLSearchParams</a>)</li>
+        <li>URL (<a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/URL" target=_blank>constructor</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams" target=_blank>URLSearchParams</a>)<ul><li><i>Not supported under IE8-
+</i></li></ul></li>
         <li>XMLHttpRequest (<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send" target=_blank>send</a>)</li>
     </ul>
 </details>
