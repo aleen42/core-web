@@ -47,7 +47,7 @@ jobs:
           npm t
         env:
           FORCE_COLOR: 2
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: logs-(${{ matrix.os }}-${{ matrix.node }})
