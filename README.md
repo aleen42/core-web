@@ -54,7 +54,8 @@ Check the following list of supported polyfills and feel free to use it. If ther
         <li>HTMLOptionElement (<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option" target=_blank>Option</a>)</li>
         <li>URL (<a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/URL" target=_blank>constructor</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams" target=_blank>URLSearchParams</a>)<ul><li><i>Not supported under IE8-
 </i></li></ul></li>
-        <li>XMLHttpRequest (<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send" target=_blank>send</a>)</li>
+        <li>XMLHttpRequest (<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send" target=_blank>send</a>)<ul><li><i>HTTP Request methods like <code>CONNECT</code>, <code>PATCH</code>, <code>TRACE</code> are not supported under IE8-
+</i></li></ul></li>
     </ul>
 </details>
 <details>
@@ -62,7 +63,6 @@ Check the following list of supported polyfills and feel free to use it. If ther
     <ul>
         <li>Abort (<a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" target=_blank>AbortController</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal" target=_blank>AbortSignal</a>)</li>
         <li>Fetch (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target=_blank>Fetch_API</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers" target=_blank>Headers</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target=_blank>Request</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target=_blank>Response</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials" target=_blank>credentials</a>)<ul><li><i><code>XMLHttpRequest</code> returns a text rather than a <code>Blob</code> under IE9-, and it means that <code>fetch()</code> cannot handle <code>utf-16le</code> data.
-</i></li><li><i>native <code>fetch()</code> <a href="https://github.com/github/fetch/pull/1119">won't normalize</a> the <code>patch</code> method as uppercase.
 </i></li><li><i><a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials"><code>credentials</code></a> is not supported under IE9-.
 </i></li></ul></li>
         <li>Streams (<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream" target=_blank>ReadableStream</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/WritableStream" target=_blank>WritableStream</a>)<ul><li><i>Not supported under IE8- due to <a href="https://github.com/MattiasBuelens/web-streams-polyfill/issues/125">the reason</a>

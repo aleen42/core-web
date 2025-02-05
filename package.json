@@ -56,7 +56,7 @@
     "text-encoding": "^0.7.0",
     "web-streams-polyfill": "^4.1.0",
     "webpack": "^5.65.0",
-    "whatwg-fetch": "npm:@aleen42/whatwg-fetch@^3.6.3-beta.4"
+    "whatwg-fetch": "npm:@aleen42/whatwg-fetch@^3.6.21-beta"
   },
   "engines": {
     "node": ">=18.0.0"
